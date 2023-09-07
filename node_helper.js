@@ -155,8 +155,9 @@ module.exports = NodeHelper.create({
       Log.info(LOG_PREFIX + 'fetching images for: ', today.toISOString());
 //**      response = await this.http.get('/asset/memory-lane', {params: {
 //**        timestamp: today.toISOString()
-        response = await this.http.get('/album/a20f95a4-2877-497e-8b31-c00e13b18bca',
-          }, responseType: 'json'});
+        response = await this.http.get('/album/a20f95a4-2877-497e-8b31-c00e13b18bca'//,
+//**          }, responseType: 'json'}
+          );
       // Log.info(LOG_PREFIX + 'response', today.toISOString(), response.data.length);
 //**      response.data.forEach(memory => {
 //**        this.imageList = memory.assets.concat(this.imageList);
