@@ -24,7 +24,7 @@ Module.register('MMM-ImmichAlbum', {
     // Base Immich URL.  /api will be appended to this URL to make API calls.
     immichUrl: 'provide your base Immich URL',
     //an Immich Album ID containing photos
-    immichAlbumID: 'provide album ID',
+    immichAlbumId: 'provide album ID',
     // Number of days to include images for, including today
     numDaysToInclude: 7,
     // the speed at which to switch between images, in milliseconds
