@@ -1,6 +1,6 @@
 # Module: Immich Album
 
-This is a MagicMirror module based on <a href="https://github.com/darickc/MMM-BackgroundSlideshow">MMM-BackgroundSlideshow</a> that works with <a href="https://immich.app/">Immich</a>.
+This is a MagicMirror module based on <a href="https://github.com/pelaxa/MMM-ImmichSlideShow">MMM-ImmichSlideShow</a> that works with <a href="https://immich.app/">Immich</a>.
 
 The `MMM-ImmichAlbum` module is designed to display images fullscreen, one at a time on a fixed interval, from <a href="https://immich.app/">Immich</a>. These images can be shown in order or at random. The images can transition from one to the other and be shown with no edge (cover) or the entire image (contain).  The configuration is also mostly matching MMM-Background.
 
@@ -14,7 +14,7 @@ This module requires no special dependencies besides a working <a href="https://
 
 ## Operation
 
-This module will require the URL of your Immich instance and your API Key at a minimum. The module will display images from the past 7 days (default value) over the years. In either chronological, alphabetical or random order. Once all the images have been shown, it will loop back and start again after refreshing the images in case the date has changed.
+This module will require the URL of your Immich instance, your API Key, and an Immich album ID at a minimum. The module will display images from album given in either chronological, alphabetical or random order. Once all the images have been shown, it will loop back and start again after refreshing the images in case the date has changed.
 
 Extra configurations include setting the amount of time an image is shown for, selecting which file extensions are valid, the transition speed from one image to another, the background sizing, and whether or not to animate the transition from one to the other.
 
@@ -78,27 +78,27 @@ The following notifications can be used:
 	<thead>
 	<tbody>
 		<tr>
-			<td><code>IMMICHSLIDESHOW_UPDATE_IMAGE_LIST</code></td>
+			<td><code>IMMICHALBUM_UPDATE_IMAGE_LIST</code></td>
 			<td>Reload images list and start slideshow from first image. Works best when sorted by modified date descending.<br>
 			</td>
 		</tr>
 		<tr>
-			<td><code>IMMICHSLIDESHOW_NEXT</code></td>
+			<td><code>IMMICHALBUM_NEXT</code></td>
 			<td>Change to the next image, restart the timer for image changes only if already running<br>
 			</td>
 		</tr>
 		<tr>
-			<td><code>IMMICHSLIDESHOW_PREVIOUS</code></td>
+			<td><code>IMMICHALBUM_PREVIOUS</code></td>
 			<td>Change to the previous image, restart the timer for image changes only if already running<br>
 			</td>
 		</tr>
 		<tr>
-			<td><code>IMMICHSLIDESHOW_PAUSE</code></td>
+			<td><code>IMMICHALBUM_PAUSE</code></td>
 			<td>Pause the timer for image changes<br>
 			</td>
 		</tr>
 		<tr>
-			<td><code>IMMICHSLIDESHOW_PLAY</code></td>
+			<td><code>IMMICHALBUM_PLAY</code></td>
 			<td>Change to the next image and start the timer for image changes<br>
 			</td>
 		</tr>
