@@ -1,19 +1,19 @@
 /* global Module */
 
-/* MMM-ImmichSlideShow.js
+/* MMM-ImmichAlbum.js
  *
  * Magic Mirror
- * Module: MMM-ImmichSlideShow
+ * Module: MMM-ImmichAlbum
  *
  * Magic Mirror By Michael Teeuw http://michaelteeuw.nl
  * MIT Licensed.
  *
- * Module MMM-Slideshow By Darick Carpenter
+ * Module MMM-Album By Stephen Corkins
  * MIT Licensed.
  */
-const LOG_PREFIX = 'MMM-ImmichSlideShow :: module :: ';
+const LOG_PREFIX = 'MMM-ImmichAlbum :: module :: ';
 
-Module.register('MMM-ImmichSlideShow', {
+Module.register('MMM-ImmichAlbum', {
   // Min version of MM2 required
   requiresVersion: "2.1.0",
 
@@ -165,7 +165,7 @@ Module.register('MMM-ImmichSlideShow', {
 
   getStyles: function () {
     // the css contains the make grayscale code
-    return ['immichSlideShow.css'];
+    return ['immichAlbum.css'];
   },
 
   // generic notification handler
@@ -191,7 +191,7 @@ Module.register('MMM-ImmichSlideShow', {
     Log.info(LOG_PREFIX + 'socketNotificationReceived', notification, ' || Payload: ', payload);
 
     // check this is for this module based on the woeid
-    if (notification === 'IMMICHSLIDESHOW_READY') {
+    if (notification === 'IMMICHALBUM_READY') {
       // // Log.info(LOG_PREFIX + 'Returning Images, payload:' + JSON.stringify(payload));
       // // set the image list
       // if (this.savedImages) {
@@ -209,47 +209,47 @@ Module.register('MMM-ImmichSlideShow', {
       //   }
       // }
       if (payload.identifier === this.identifier) {
-        // this.sendSocketNotification('IMMICHSLIDESHOW_NEXT_IMAGE');
+        // this.sendSocketNotification('IMMICHALBUM_NEXT_IMAGE');
         if (!this.playingVideo) {
           this.resume();
         }
       }
-    } else if (notification === 'IMMICHSLIDESHOW_REGISTER_CONFIG') {
+    } else if (notification === 'IMMICHALBUM_REGISTER_CONFIG') {
       // Update config in backend
       this.updateImageList();
-    } else if (notification === 'IMMICHSLIDESHOW_PLAY') {
+    } else if (notification === 'IMMICHALBUM_PLAY') {
       // Change to next image and start timer.
       // this.updateImage();
       if (!this.playingVideo) {
         this.resume();
       }
-    } else if (notification === 'IMMICHSLIDESHOW_DISPLAY_IMAGE') {
+    } else if (notification === 'IMMICHALBUM_DISPLAY_IMAGE') {
       // check this is for this module based on the woeid
       if (payload.identifier === this.identifier) {
         this.displayImage(payload);
       }
-    } else if (notification === 'IMMICHSLIDESHOW_FILELIST') {
+    } else if (notification === 'IMMICHALBUM_FILELIST') {
       //bubble up filelist notifications
-      this.sendSocketNotification('IMMICHSLIDESHOW_FILELIST', payload);
-    } else if (notification === 'IMMICHSLIDESHOW_UPDATE_IMAGE_LIST') {
+      this.sendSocketNotification('IMMICHALBUM_FILELIST', payload);
+    } else if (notification === 'IMMICHALBUM_UPDATE_IMAGE_LIST') {
       this.imageIndex = -1;
       this.updateImageList();
       this.updateImage();
-    } else if (notification === 'IMMICHSLIDESHOW_IMAGE_UPDATE') {
+    } else if (notification === 'IMMICHALBUM_IMAGE_UPDATE') {
       Log.info(LOG_PREFIX + 'Changing Background');
       this.suspend();
       // this.updateImage();
       if (!this.playingVideo) {
         this.resume();
       }
-    } else if (notification === 'IMMICHSLIDESHOW_NEXT') {
+    } else if (notification === 'IMMICHALBUM_NEXT') {
       // Change to next image
       // this.updateImage();
       if (!this.playingVideo) {
         // Restart timer only if timer was already running
         this.resume();
       }
-    } else if (notification === 'IMMICHSLIDESHOW_PREVIOUS') {
+    } else if (notification === 'IMMICHALBUM_PREVIOUS') {
       // Change to previous image
       this.updateImage(/* skipToPrevious= */ true);
       if (!this.playingVideo) {
@@ -276,7 +276,7 @@ Module.register('MMM-ImmichSlideShow', {
     }
 
     if (this.config.showProgressBar) {
-      this.createProgressbarDiv(wrapper, this.config.slideshowSpeed);
+      this.createProgressbarDiv(wrapper, this.config.ALBUMSpeed);
     }
 
     if (this.config.apiKey.length == 0) {
@@ -439,7 +439,7 @@ Module.register('MMM-ImmichSlideShow', {
     };
 
     image.src = 'data:image/jpeg;base64, ' + imageinfo.data;
-    this.sendSocketNotification('IMMICHSLIDESHOW_IMAGE_UPDATED', {
+    this.sendSocketNotification('IMMICHALBUM_IMAGE_UPDATED', {
       url: imageinfo.path
     });
   },
@@ -471,9 +471,9 @@ Module.register('MMM-ImmichSlideShow', {
     }
 
     if (backToPreviousImage) {
-      this.sendSocketNotification('IMMICHSLIDESHOW_PREV_IMAGE');
+      this.sendSocketNotification('IMMICHALBUM_PREV_IMAGE');
     } else {
-      this.sendSocketNotification('IMMICHSLIDESHOW_NEXT_IMAGE');
+      this.sendSocketNotification('IMMICHALBUM_NEXT_IMAGE');
     }
   },
 
@@ -559,7 +559,7 @@ Module.register('MMM-ImmichSlideShow', {
     //   this.timer = null;
     // }
     this.sendSocketNotification(
-      'IMMICHSLIDESHOW_SUSPEND'
+      'IMMICHALBUM_SUSPEND'
     );
   },
 
@@ -577,7 +577,7 @@ Module.register('MMM-ImmichSlideShow', {
     //   self.updateImage();
     // }, self.config.slideshowSpeed);
     this.sendSocketNotification(
-      'IMMICHSLIDESHOW_RESUME'
+      'IMMICHALBUM_RESUME'
     );
   },
 
@@ -586,7 +586,7 @@ Module.register('MMM-ImmichSlideShow', {
     // Log.info(LOG_PREFIX + 'Getting Images');
     // ask helper function to get the image list
     this.sendSocketNotification(
-      'IMMICHSLIDESHOW_REGISTER_CONFIG',
+      'IMMICHALBUM_REGISTER_CONFIG',
       this.config
     );
   }
