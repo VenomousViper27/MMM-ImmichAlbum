@@ -8,7 +8,7 @@
  * Magic Mirror By Michael Teeuw http://michaelteeuw.nl
  * MIT Licensed.
  *
- * Module MMM-Album By Stephen Corkins
+ * Module MMM-ImmichAlbum By Stephen Corkins
  * MIT Licensed.
  */
 const LOG_PREFIX = 'MMM-ImmichAlbum :: module :: ';
