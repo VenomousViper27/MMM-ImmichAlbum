@@ -1,20 +1,20 @@
-.MMM-ImmichSlideShow .images,
-.MMM-ImmichSlideShow .image,
-.MMM-ImmichSlideShow .transition,
-.MMM-ImmichSlideShow .gradient {
+.MMM-ImmichAlbum .images,
+.MMM-ImmichAlbum .image,
+.MMM-ImmichAlbum .transition,
+.MMM-ImmichAlbum .gradient {
   position: absolute;
   top: 0;
   left: 0;
   height: 100%;
   width: 100%;
 }
-.MMM-ImmichSlideShow .image {
+.MMM-ImmichAlbum .image {
   background-repeat: no-repeat;
   animation-timing-function: linear;
   animation-direction: alternate;
   animation-iteration-count: infinite;
 }
-.MMM-ImmichSlideShow .transition {
+.MMM-ImmichAlbum .transition {
   animation-timing-function: ease-out;
 }
 
@@ -125,7 +125,7 @@
   }
 }
 
-.MMM-ImmichSlideShow .info {
+.MMM-ImmichAlbum .info {
   display: inline-block;
   padding: 15px;
   background-color: rgba(0, 0, 0, 0.3);
@@ -145,19 +145,19 @@
   }
 }
 
-.MMM-ImmichSlideShow .progress {
+.MMM-ImmichAlbum .progress {
   position: absolute;
   bottom: 0px;
   height: 2px;
   width: 100%;
 }
 
-.MMM-ImmichSlideShow .progress-inner {
+.MMM-ImmichAlbum .progress-inner {
   height: 100%;
   background-color: white;
 }
 
-.MMM-ImmichSlideShow .infoDivHeader {
+.MMM-ImmichAlbum .infoDivHeader {
   font-size: 15px;
   font-family: 'Roboto Condensed', Arial, Helvetica, sans-serif;
   font-weight: 400;
@@ -167,63 +167,63 @@
   color: #CCC;
 }
 
-.MMM-ImmichSlideShow .bottomLeft {
+.MMM-ImmichAlbum .bottomLeft {
   bottom: 0pt;
   left: 0pt;
   border-width: 1pt 1pt 0 0;
   border-top-right-radius: 20pt;
 }
 
-.MMM-ImmichSlideShow .bottomRight {
+.MMM-ImmichAlbum .bottomRight {
   bottom: 0pt;
   right: 0pt;
   border-width: 1pt 0 0 1pt;
   border-top-left-radius: 20pt;
 }
 
-.MMM-ImmichSlideShow .topRight {
+.MMM-ImmichAlbum .topRight {
   top: 0pt;
   right: 0pt;
   border-width: 0 0 1pt 1pt;
   border-bottom-left-radius: 20pt;
 }
 
-.MMM-ImmichSlideShow .topLeft {
+.MMM-ImmichAlbum .topLeft {
   top: 0pt;
   left: 0pt;
   border-width: 0 1pt 1pt 0;
   border-bottom-right-radius: 20pt;
 }
 
-.MMM-ImmichSlideShow .slideH {
+.MMM-ImmichAlbum .slideH {
   background-size: cover;
   background-position: left;
   animation-name: slideH;
 }
 
-.MMM-ImmichSlideShow .slideV {
+.MMM-ImmichAlbum .slideV {
   background-size: cover;
   background-position: top;
   animation-name: slideV;
 }
 
-.MMM-ImmichSlideShow .slideHInv {
+.MMM-ImmichAlbum .slideHInv {
   background-size: cover;
   background-position: right;
   animation-name: slideHInv;
 }
 
-.MMM-ImmichSlideShow .slideVInv {
+.MMM-ImmichAlbum .slideVInv {
   background-size: cover;
   background-position: bottom;
   animation-name: slideVInv;
 }
-.MMM-ImmichSlideShow .zoomIn {
+.MMM-ImmichAlbum .zoomIn {
   animation-name: zoomIn;
   transform: scale(1);
 }
 
-.MMM-ImmichSlideShow .zoomOut {
+.MMM-ImmichAlbum .zoomOut {
   animation-name: zoomOut;
   transform: scale(1.1);
 }
