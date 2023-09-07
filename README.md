@@ -1,8 +1,8 @@
-# Module: Immich Slide Show
+# Module: Immich Album
 
 This is a MagicMirror module based on <a href="https://github.com/darickc/MMM-BackgroundSlideshow">MMM-BackgroundSlideshow</a> that works with <a href="https://immich.app/">Immich</a>.
 
-The `MMM-ImmichSlideShow` module is designed to display images fullscreen, one at a time on a fixed interval, from <a href="https://immich.app/">Immich</a>. These images can be shown in order or at random. The images can transition from one to the other and be shown with no edge (cover) or the entire image (contain).  The configuration is also mostly matching MMM-Background.
+The `MMM-ImmichAlbum` module is designed to display images fullscreen, one at a time on a fixed interval, from <a href="https://immich.app/">Immich</a>. These images can be shown in order or at random. The images can transition from one to the other and be shown with no edge (cover) or the entire image (contain).  The configuration is also mostly matching MMM-Background.
 
 
 <img src="https://github.com/darickc/MMM-BackgroundSlideshow/blob/master/screenshots/landscape.jpg" style="width: 300px;" />
@@ -20,16 +20,16 @@ Extra configurations include setting the amount of time an image is shown for, s
 
 ## Using the module
 
-Use Git to download. Make sure Git is installed on your system. In the command line/terminal, go to the modules directory of the your Magic Mirror install. run: `git clone https://github.com/pelaxa/MMM-ImmichSlideShow.git`. The advantage of using Git is when there is an update, you can run `git pull` and it will pull down all the updates. Magic Mirror can even let you know when there are updates.
+Use Git to download. Make sure Git is installed on your system. In the command line/terminal, go to the modules directory of the your Magic Mirror install. run: `git clone https://github.com/VenomousViper27/MMM-ImmichAlbum.git`. The advantage of using Git is when there is an update, you can run `git pull` and it will pull down all the updates. Magic Mirror can even let you know when there are updates.
 
 Or
 
-Download the zip file https://github.com/pelaxa/MMM-ImmichSlideShow/archive/main.zip. Unzip contents into the modules directory of your Magic Mirror install. Rename the 'MMM-ImmichSlideShow-main' folder to 'MMM-ImmichSlideShow'.
+Download the zip file https://github.com/VenomousViper27/MMM-ImmichAlbum/archive/main.zip. Unzip contents into the modules directory of your Magic Mirror install. Rename the 'MMM-ImmichAlbum-main' folder to 'MMM-ImmichAlbum'.
 
 Once downloaded, install dependencies:
 
 ```
-cd ~/MagicMirror/modules/MMM-ImmichSlideShow
+cd ~/MagicMirror/modules/MMM-ImmichAlbum
 ```
 
 ```
@@ -41,7 +41,7 @@ Add the module to the modules array in the `config/config.js` file:
 ```javascript
 modules: [
   {
-    module: 'MMM-ImmichSlideShow',
+    module: 'MMM-ImmichAlbum',
     position: 'fullscreen_below',
     config: {
 	  apiKey: '<Your API key>',
