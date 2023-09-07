@@ -3,12 +3,12 @@
 /* node_helper.js
  *
  * Magic Mirror
- * Module: MMM-IMMICHSLIDESHOW
+ * Module: MMM-IMMICHALBUM
  *
  * Magic Mirror By Michael Teeuw http://michaelteeuw.nl
  * MIT Licensed.
  *
- * Module MMM-IMMICHSLIDESHOW By Korey Sedaghatian
+ * Module MMM-IMMICHALBUM By Stephen Corkins
  * MIT Licensed.
  */
 
@@ -18,7 +18,7 @@ var NodeHelper = require('node_helper');
 const jo = require('jpeg-autorotate');
 const axios = require('axios');
 const convert = require('heic-convert');
-const LOG_PREFIX = 'MMM-ImmichSlideShow :: node_helper :: ';
+const LOG_PREFIX = 'MMM-ImmichAlbum :: node_helper :: ';
 
 // the main module helper create
 module.exports = NodeHelper.create({
@@ -122,7 +122,7 @@ module.exports = NodeHelper.create({
   gatherImageList: async function (config, sendNotification) {
     // Invalid config. retrieve it again
     if (config === undefined) {
-      this.sendSocketNotification('IMMICHSLIDESHOW_REGISTER_CONFIG');
+      this.sendSocketNotification('IMMICHALBUM_REGISTER_CONFIG');
       return;
     }
 
@@ -180,8 +180,8 @@ module.exports = NodeHelper.create({
       this.index = 0;
     }
 
-    // let other modules know about slideshow images
-    this.sendSocketNotification('IMMICHSLIDESHOW_FILELIST', {
+    // let other modules know about album images
+    this.sendSocketNotification('IMMICHALBUM_FILELIST', {
       imageList: this.imageList
     });
 
@@ -192,7 +192,7 @@ module.exports = NodeHelper.create({
 
     // signal ready
     if (sendNotification) {
-      this.sendSocketNotification('IMMICHSLIDESHOW_READY', returnPayload);
+      this.sendSocketNotification('IMMICHALBUM_READY', returnPayload);
     }
   },
 
@@ -243,7 +243,7 @@ module.exports = NodeHelper.create({
         }
 
         self.sendSocketNotification(
-          'IMMICHSLIDESHOW_DISPLAY_IMAGE',
+          'IMMICHALBUM_DISPLAY_IMAGE',
           returnPayload
         );
       } catch (e) {
@@ -303,7 +303,7 @@ module.exports = NodeHelper.create({
 
   // subclass socketNotificationReceived, received notification from module
   socketNotificationReceived: function (notification, payload) {
-    if (notification === 'IMMICHSLIDESHOW_REGISTER_CONFIG') {
+    if (notification === 'IMMICHALBUM_REGISTER_CONFIG') {
       const config = payload;
 
       // Create set of valid image extensions.
@@ -318,28 +318,28 @@ module.exports = NodeHelper.create({
       setTimeout(() => {
         this.gatherImageList(config, true);
       }, 200);
-    } else if (notification === 'IMMICHSLIDESHOW_PLAY_VIDEO') {
-      Log.info(LOG_PREFIX + 'mw got IMMICHSLIDESHOW_PLAY_VIDEO');
+    } else if (notification === 'IMMICHALBUM_PLAY_VIDEO') {
+      Log.info(LOG_PREFIX + 'mw got IMMICHALBUM_PLAY_VIDEO');
       Log.info(
         LOG_PREFIX + 'cmd line:' + 'omxplayer --win 0,0,1920,1080 --alpha 180 ' + payload[0]
       );
       exec(
         'omxplayer --win 0,0,1920,1080 --alpha 180 ' + payload[0],
         (e, stdout, stderr) => {
-          this.sendSocketNotification('IMMICHSLIDESHOW_PLAY', null);
+          this.sendSocketNotification('IMMICHALBUM_PLAY', null);
           Log.info(LOG_PREFIX + 'mw video done');
         }
       );
-    } else if (notification === 'IMMICHSLIDESHOW_NEXT_IMAGE') {
-      Log.info(LOG_PREFIX + 'IMMICHSLIDESHOW_NEXT_IMAGE');
+    } else if (notification === 'IMMICHALBUM_NEXT_IMAGE') {
+      Log.info(LOG_PREFIX + 'IMMICHALBUM_NEXT_IMAGE');
       // this.getNextImage();
-    } else if (notification === 'IMMICHSLIDESHOW_PREV_IMAGE') {
-      Log.info(LOG_PREFIX + 'IMMICHSLIDESHOW_PREV_IMAGE');
+    } else if (notification === 'IMMICHALBUM_PREV_IMAGE') {
+      Log.info(LOG_PREFIX + 'IMMICHALBUM_PREV_IMAGE');
       this.getPrevImage();
-    } else if (notification === 'IMMICHSLIDESHOW_RESUME') {
+    } else if (notification === 'IMMICHALBUM_RESUME') {
       // Resume
       this.resume();
-    } else if (notification === 'IMMICHSLIDESHOW_SUSPEND') {
+    } else if (notification === 'IMMICHALBUM_SUSPEND') {
       // Suspend
       this.suspend();
     } else {
