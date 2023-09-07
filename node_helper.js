@@ -153,12 +153,15 @@ module.exports = NodeHelper.create({
     for (var i=0; i < config.numDaysToInclude; i++) {
       today.setDate(today.getDate()-1);
       Log.info(LOG_PREFIX + 'fetching images for: ', today.toISOString());
-      response = await this.http.get('/asset/memory-lane', {params: {
-        timestamp: today.toISOString()
-      }, responseType: 'json'});
+//**      response = await this.http.get('/asset/memory-lane', {params: {
+//**        timestamp: today.toISOString()
+        response = await this.http.get('/album/a20f95a4-2877-497e-8b31-c00e13b18bca',
+          }, responseType: 'json'});
       // Log.info(LOG_PREFIX + 'response', today.toISOString(), response.data.length);
-      response.data.forEach(memory => {
-        this.imageList = memory.assets.concat(this.imageList);
+//**      response.data.forEach(memory => {
+//**        this.imageList = memory.assets.concat(this.imageList);
+        response.data.forEach(album => {
+          this.imageList = album.assets.concat(this.imageList);
         // Log.info(LOG_PREFIX + 'imageList', today.toISOString(), this.imageList.length);
       });
     }
