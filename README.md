@@ -1,3 +1,5 @@
+**NOTE: This module is currently non-functional, I'm using this space to test and learn about Immich and MagicMirror modules**
+
 # Module: Immich Album
 
 This is a MagicMirror module based on <a href="https://github.com/pelaxa/MMM-ImmichSlideShow">MMM-ImmichSlideShow</a> that works with <a href="https://immich.app/">Immich</a>.
